@@ -21,7 +21,8 @@ import { routes } from './routes';
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('AllVehicules', require('./components/AllVehicles.vue').default);
+Vue.component('AllVehicles', require('./components/AllVehicles.vue').default);
+Vue.component('VehicleView', require('./components/VehicleView.vue').default);
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.use(VueMaterial)

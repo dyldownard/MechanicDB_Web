@@ -35,7 +35,7 @@
         </br>
         </br>
         <div v-bind:style="{display: 'flex', flexWrap: 'wrap'}">
-            <div v-bind:style="{minWidth: '250px', width: 'fit-content', padding: '5px', borderRadius: '5px'}" v-for="vehicle in vehicles" :key="vehicle.vid">
+            <div @click="onVehicleClicked(vehicle)" v-bind:style="{minWidth: '250px', width: 'fit-content', padding: '5px', borderRadius: '5px'}" v-for="vehicle in vehicles" :key="vehicle.vid">
                 <md-card v-bind:style="{borderRadius: '5px'}" md-with-hover>
                     <md-card-header v-bind:style="{backgroundColor: '#448aff', borderRadius: '5px'}">
                         <div v-bind:style="{color: 'white'}" class="md-title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
@@ -93,6 +93,9 @@ export default {
                 this.vehicles = response.data;
                 this.showDialog = false
         });  
+      },
+      onVehicleClicked(vehicle) {
+          this.$emit('eventname', ["VehicleView", vehicle, null])
       }
     }
 }
