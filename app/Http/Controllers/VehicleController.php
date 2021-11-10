@@ -10,7 +10,7 @@ class VehicleController extends Controller
     //
     public function index() {
       $vehicles = Vehicle::all()->toArray();
-      return array_reverse($vehicles);
+      return $vehicles;
     }
 
     public function store(Request $request){

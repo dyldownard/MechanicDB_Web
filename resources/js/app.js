@@ -3,11 +3,13 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import Vue from 'vue';
+import Vue from 'vue/dist/vue.js';
 
 require('./bootstrap');
 window.Vue = Vue;
 
+import VueMaterial from 'vue-material';
+import 'vue-material/dist/vue-material.min.css'
 import App from './App.vue';
 import VueAxios from 'vue-axios';
 import VueRouter from 'vue-router';
@@ -19,9 +21,10 @@ import { routes } from './routes';
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+Vue.component('AllVehicules', require('./components/AllVehicles.vue').default);
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+Vue.use(VueMaterial)
 
 const router = new VueRouter({
     mode: 'history',
@@ -30,6 +33,6 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router: router,
+    router,
     render: h => h(App),
 });

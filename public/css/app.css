@@ -10019,3 +10019,11 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.md-dialog .md-field {
+  width: unset;
+}
+
+.md-dialog .md-dialog-container {
+  max-width: 768px;
+  min-width: 500px;
+}

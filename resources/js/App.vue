@@ -4,7 +4,6 @@
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav">
                     <router-link to="/" class="nav-item nav-link">Vehicle List</router-link>
-                    {/*<router-link to="/create" class="nav-item nav-link">Add Vehicle</router-link>*/}
                 </div>
             </div>
         </nav>
@@ -13,6 +12,7 @@
     </div>
 
 </template>
+
 
 <script>
 export default {}
