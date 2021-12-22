@@ -1,12 +1,6 @@
 <template>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse">
-                <div class="navbar-nav">
-                    <router-link to="/" class="nav-item nav-link">Vehicle List</router-link>
-                </div>
-            </div>
-        </nav>
+        <h1 v-bind:style="{marginTop:'30px'}" class="text-center"> MechanicDB </h1>
         <keep-alive>
             <component :properties.sync="properties" @eventname="updateparent" :is="dynamicComponent"></component>
         </keep-alive>

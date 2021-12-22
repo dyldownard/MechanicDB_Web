@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,5 @@ use App\Http\Controllers\VehicleController;
 
 Route::middleware('api')->group(function () {
   Route::resource('vehicles', VehicleController::class);
+  Route::resource('tasks', TaskController::class);
 });

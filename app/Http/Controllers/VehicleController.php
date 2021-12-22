@@ -34,14 +34,14 @@ class VehicleController extends Controller
       $vehicle = Vehicle::find($vid);
       $vehicle->update($request->all());
 
-      return response()->json('Product Updated!');
+      return response()->json('Vehicle Updated!');
     }
 
     public function destroy($vid){
-      $vehicle = Vehicle::find($id);
+      $vehicle = Vehicle::find($vid);
       $vehicle->delete();
 
-      return response()->json('Product Deleted!');
+      return response()->json('Vehicle Deleted!');
     }
 
 

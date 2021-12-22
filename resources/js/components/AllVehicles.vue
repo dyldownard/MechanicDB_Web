@@ -30,7 +30,6 @@
             </md-dialog-actions>
         </md-dialog>
 
-        <h1 class="text-center">MechanicDB</h1>
         <h2 class="text-center">Vehicles List</h2>
         </br>
         </br>

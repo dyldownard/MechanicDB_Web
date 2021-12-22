@@ -5,3 +5,8 @@ We set up an ecosystem that allows our applications to share the same database o
 
 # Web
 MechanicDB_Web is the webapp version of MechanicDB. It is built using Laravel + Vue.js
+
+# Local Startup
+run in two seperate terminals:
+php laravel serve
+npm run watch

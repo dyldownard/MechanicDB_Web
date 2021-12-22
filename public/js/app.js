@@ -2079,12 +2079,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2114,7 +2108,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
 //
 //
 //
@@ -2241,16 +2234,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "VehicleView",
+  data: function data() {
+    return {
+      showDialog: false,
+      vehicle: {},
+      tasks: []
+    };
+  },
   props: {
     properties: Array
   },
   activated: function activated() {
-    console.log(this.properties[0].model);
+    var _this = this;
+
+    if (this.vehicle === this.properties[0]) {
+      return;
+    } else {
+      this.tasks = [];
+    }
+
+    console.log(this.properties[0].vid);
+    this.vehicle = this.properties[0];
+    this.axios.get('http://localhost:8000/api/tasks/' + this.properties[0].vid).then(function (response) {
+      _this.tasks = response.data;
+      console.log(response.data);
+    })["catch"](function (err) {
+      console.log(err.response.data);
+      console.log(err.response.status);
+      console.log(err.response.headers);
+    });
   },
   methods: {
-    onClicked: function onClicked() {
+    onBackClicked: function onBackClicked() {
       this.$emit('eventname', ["AllVehicles", this.properties[0], this.properties[1]]);
     }
   }
@@ -38353,26 +38393,9 @@ var render = function () {
     "div",
     { staticClass: "container" },
     [
-      _c(
-        "nav",
-        { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
-        [
-          _c("div", { staticClass: "collapse navbar-collapse" }, [
-            _c(
-              "div",
-              { staticClass: "navbar-nav" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "nav-item nav-link", attrs: { to: "/" } },
-                  [_vm._v("Vehicle List")]
-                ),
-              ],
-              1
-            ),
-          ]),
-        ]
-      ),
+      _c("h1", { staticClass: "text-center", style: { marginTop: "30px" } }, [
+        _vm._v(" MechanicDB "),
+      ]),
       _vm._v(" "),
       _c(
         "keep-alive",
@@ -38567,8 +38590,6 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c("h1", { staticClass: "text-center" }, [_vm._v("MechanicDB")]),
-      _vm._v(" "),
       _c("h2", { staticClass: "text-center" }, [_vm._v("Vehicles List")]),
       _vm._v(" "),
       _c("br"),
@@ -38693,10 +38714,98 @@ var render = function () {
       _c(
         "md-button",
         {
-          staticClass: "md-fab",
+          staticClass: "md-icon-button",
+          style: { position: "fixed" },
           on: {
             click: function ($event) {
-              return _vm.onClicked()
+              return _vm.onBackClicked()
+            },
+          },
+        },
+        [_c("md-icon", [_vm._v("arrow_back")])],
+        1
+      ),
+      _vm._v(" "),
+      _c("h2", { staticClass: "text-center" }, [
+        _vm._v(
+          _vm._s(_vm.vehicle.year) +
+            " " +
+            _vm._s(_vm.vehicle.make) +
+            " " +
+            _vm._s(_vm.vehicle.model) +
+            "'s Tasks"
+        ),
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "div",
+        { style: {} },
+        _vm._l(_vm.tasks, function (task) {
+          return _c(
+            "div",
+            {
+              key: task.tid,
+              style: {
+                minWidth: "250px",
+                width: "fit-content",
+                padding: "5px",
+                borderRadius: "5px",
+              },
+            },
+            [
+              _c(
+                "md-card",
+                {
+                  style: { borderRadius: "5px" },
+                  attrs: { "md-with-hover": "" },
+                },
+                [
+                  _c(
+                    "md-card-header",
+                    {
+                      style: {
+                        backgroundColor: "#448aff",
+                        borderRadius: "5px",
+                      },
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "md-title", style: { color: "white" } },
+                        [
+                          _vm._v(
+                            _vm._s(task.datecomp) + " | " + _vm._s(task.name)
+                          ),
+                        ]
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("md-card-content", { style: { padding: "5px" } }, [
+                    _c("ul", { style: { marginTop: "14px" } }),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "md-button",
+        {
+          staticClass: "md-fab md-fab-bottom-right",
+          attrs: { "md-primary": "" },
+          on: {
+            click: function ($event) {
+              _vm.showDialog = true
             },
           },
         },

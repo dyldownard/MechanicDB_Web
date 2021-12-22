@@ -1,5 +1,11 @@
 <!doctype html>
-<html lang="{{ str_replace('_','-', app()->getLocale())}}">
+<style scoped>
+.heightfix {
+  height: 96vh;
+}
+</style>
+
+<html class="heightfix" lang="{{ str_replace('_','-', app()->getLocale())}}">
 
 <head>
   <meta charset="utf-8">
